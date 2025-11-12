@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Platforms>x64</Platforms>
+    <NoWarn>NU1701;NU1603</NoWarn>
+  </PropertyGroup>
+
+  <!-- Use COM references with embedded interop types to avoid requiring the 'office' assembly at runtime -->
+	<ItemGroup>
+		<COMReference Include="Microsoft Outlook 16.0 Object Library">
+			<Guid>{00062FFF-0000-0000-C000-000000000046}</Guid>
+			<VersionMajor>9</VersionMajor>
+			<VersionMinor>6</VersionMinor>
+			<!-- required -->
+			<Lcid>0</Lcid>
+			<WrapperTool>tlbimp</WrapperTool>
+			<Isolated>false</Isolated>
+			<EmbedInteropTypes>true</EmbedInteropTypes>
+		</COMReference>
+		<COMReference Include="Microsoft Office 16.0 Object Library">
+			<Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+			<VersionMajor>2</VersionMajor>
+			<VersionMinor>8</VersionMinor>
+			<!-- required -->
+			<Lcid>0</Lcid>
+			<WrapperTool>tlbimp</WrapperTool>
+			<Isolated>false</Isolated>
+			<EmbedInteropTypes>true</EmbedInteropTypes>
+		</COMReference>
+	</ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+</Project>
